@@ -12,6 +12,7 @@ bl_info = {
 import bpy
 
 class LODGEN_Properties(bpy.types.PropertyGroup):
+    lod_name : boy.props.StringProperty(name = "Name")
     lod_count : bpy.props.IntProperty(name = "LODs", default = 3, soft_min = 1, soft_max = 7)
     lod_ratio : bpy.props.FloatProperty(name = "Ratio", default = 0.5, min = 0.1, max = 1.0)
 
@@ -26,6 +27,7 @@ class LODGEN_PT_panel(bpy.types.Panel):
         props = context.scene.lodgen
 
         self.layout.label(text = "Settings")
+        self.layout.prop(props, "lod_name")
         self.layout.prop(props, "lod_count")
         self.layout.prop(props, "lod_ratio", slider = True)
         self.layout.separator()
